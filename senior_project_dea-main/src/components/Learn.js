@@ -110,6 +110,19 @@ function checkAnswer7() {
   }
 }
 
+function checkAnswer8() {
+
+  var selectionQ8 = document.getElementById("q8option3");
+  if (selectionQ8.checked == true) {
+    alert("Correct!");
+    updateScore(window.localStorage.getItem("token"), "learn", "7");
+  }
+  else {
+    alert("Incorrect. Try again!");
+  }
+}
+
+
 function LearnPage() {
 
 
@@ -190,6 +203,11 @@ function LearnPage() {
   const [answer7, setSelection7] = React.useState('');
   const onChange7 = e => {
     setSelection7(e.target.value)
+  }
+
+  const [answer8, setSelection8] = React.useState('');
+  const onChange8 = e => {
+    setSelection8(e.target.value)
   }
 
   return (
@@ -627,6 +645,74 @@ function LearnPage() {
           </div>
 
           Sourced from InspiredeLearning.
+        </Tab>
+        <Tab eventKey="eighth" title="Network Traffic Analysis" style={tab}>
+          The practice of intercepting, recording, and analyzing network traffic communication patterns to discover and respond to security concerns is known as network traffic analysis. mplementing a system that can continually monitor network traffic can provide you with the information you need to improve network performance, reduce your attack surface, boost security, and better manage your resources. 
+          <div style={{ paddingTop: "15px", width: "70%", alignItems: "center", marginLeft: "auto", marginRight: "auto" }}>
+            <div style={spaceAfterQ}></div>
+            <div style={spaceAfterQ}></div>
+          </div> Q: What are the benefits of network traffic analysis?<div style={spaceAfterQ}></div>
+          <div>
+            <Form>
+              {['radio'].map((type) => (
+                <div className="mb-4">
+                  <Form.Group>
+                    <Form.Check id="q8option1"
+                      inline
+                      label="A. Investigate and resolve operational and security issues"
+                      name="answer8"
+                      type={type}
+                      value="A. Investigate and resolve operational and security issues"
+                      checked={answer8 === "A. Investigate and resolve operational and security issues"}
+                      onChange={onChange8}
+
+                    />
+                    <Form.Check id="q8option2"
+                      inline
+                      label="B. Better insight into devices that connect to your network"
+                      name="answer8"
+                      type={type}
+                      value="B. Better insight into devices that connect to your network"
+                      checked={answer8 === "B. Better insight into devices that connect to your network"}
+                      onChange={onChange8}
+
+                    />
+                    <Form.Check id="q8option3"
+                      inline
+                      label="C. Both A and B"
+                      name="answer8"
+                      type={type}
+                      value="C. Both A and B"
+                      checked={answer8 === "C. Both A and B"}
+                      onChange={onChange8}
+
+                    />
+                    <Form.Check id="q8option4"
+                      inline
+                      label="D. Neither A or B"
+                      name="answer7"
+                      type={type}
+                      value="D. Neither A or B"
+                      checked={answer8 === "D. Neither A or B"}
+                      onChange={onChange8}
+
+                    />
+                  </Form.Group>
+                </div>
+              ))}
+            </Form>
+            <Button type="submit" onClick={checkAnswer8}>Submit</Button>
+            <div style={spaceAfterQ}></div>
+            <div style={spaceAfterQ}></div>
+            <div style={spaceAfterQ}></div>
+            You selected: <strong>{answer8}</strong>
+            <div style={spaceAfterQ}></div>
+            <div style={spaceAfterQ}></div>
+            <div style={spaceAfterQ}></div>
+            <div style={spaceAfterQ}></div>
+          </div>
+
+          Sourced from TutorialsPoint.
         </Tab>
       </Tabs>
     </div>
