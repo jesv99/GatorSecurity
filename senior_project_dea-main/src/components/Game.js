@@ -137,6 +137,20 @@ function submit6() {
     return;
 }
 
+function submit7() {
+    var gamepage = document.getElementById("search-container-7");
+    console.log(gamepage);
+
+    if (document.getElementById("IP").value === "128.227.236.155") {
+        alert("Congratulations! This is the correct IP for the node before ufl.edu");
+        updateScore(window.localStorage.getItem("token"), "game", "6");
+    }
+    else {
+        alert("Incorrect. Try using command tracert on the command prompt.");
+    }
+    return;
+}
+
 const box = {
     boxShadow: "0 3px 10px rgba(0,0,0,.3)",
     padding: "30px 40px"
@@ -171,6 +185,9 @@ function GamePage() {
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link eventKey="sixth">Q6: Phishing</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item>
+                                <Nav.Link eventKey="seventh">Q7: Network Traffic Analysis: Traceroute</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Col>
@@ -241,6 +258,15 @@ function GamePage() {
                                     <input type="text" placeholder="true/false" id="true/false"></input>
                                     <button className="button" onClick={submit6}>Submit</button>
 
+                                </div>
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="seventh">
+                                <p>
+                                    Run a traceroute on the following IP Address "128.227.36.35". Provide the IP address for the hop before the last one.
+                                </p>
+                                <div id="search-container-7">
+                                    <input type="text" placeholder="Type in the IP Address" id="IP"></input>
+                                    <button className="button" onClick={submit7}>Submit</button>
                                 </div>
                             </Tab.Pane>
                         </Tab.Content>
