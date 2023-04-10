@@ -27,8 +27,8 @@ function updateScore(token_, section_, index_) {
 
 function checkAnswer1() {
 
-  var selectionQ1 = document.getElementById("q1option1");
-  if (selectionQ1.checked == true) {
+  let selectionQ1 = document.getElementById("q1option1");
+  if (selectionQ1.checked) {
     alert("Correct!");
     updateScore(window.localStorage.getItem("token"), "learn", "0");
   }
@@ -40,8 +40,8 @@ function checkAnswer1() {
 
 function checkAnswer2() {
 
-  var selectionQ2 = document.getElementById("q2option3");
-  if (selectionQ2.checked == true) {
+  let selectionQ2 = document.getElementById("q2option3");
+  if (selectionQ2.checked) {
     alert("Correct!");
     updateScore(window.localStorage.getItem("token"), "learn", "1");
   }
@@ -52,8 +52,8 @@ function checkAnswer2() {
 
 function checkAnswer3() {
 
-  var selectionQ3 = document.getElementById("q3option2");
-  if (selectionQ3.checked == true) {
+  let selectionQ3 = document.getElementById("q3option2");
+  if (selectionQ3.checked) {
     alert("Correct!");
     updateScore(window.localStorage.getItem("token"), "learn", "2");
   }
@@ -64,8 +64,8 @@ function checkAnswer3() {
 
 function checkAnswer4() {
 
-  var selectionQ4 = document.getElementById("q4option1");
-  if (selectionQ4.checked == true) {
+  let selectionQ4 = document.getElementById("q4option1");
+  if (selectionQ4.checked) {
     alert("Correct!");
     updateScore(window.localStorage.getItem("token"), "learn", "3");
   }
@@ -76,8 +76,8 @@ function checkAnswer4() {
 
 function checkAnswer5() {
 
-  var selectionQ5 = document.getElementById("q5option3");
-  if (selectionQ5.checked == true) {
+  let selectionQ5 = document.getElementById("q5option3");
+  if (selectionQ5.checked) {
     alert("Correct!");
     updateScore(window.localStorage.getItem("token"), "learn", "4");
   }
@@ -88,8 +88,8 @@ function checkAnswer5() {
 
 function checkAnswer6() {
 
-  var selectionQ6 = document.getElementById("q6option2");
-  if (selectionQ6.checked == true) {
+  let selectionQ6 = document.getElementById("q6option2");
+  if (selectionQ6.checked) {
     alert("Correct!");
     updateScore(window.localStorage.getItem("token"), "learn", "5");
   }
@@ -100,8 +100,8 @@ function checkAnswer6() {
 
 function checkAnswer7() {
 
-  var selectionQ7 = document.getElementById("q7option4");
-  if (selectionQ7.checked == true) {
+  let selectionQ7 = document.getElementById("q7option4");
+  if (selectionQ7.checked) {
     alert("Correct!");
     updateScore(window.localStorage.getItem("token"), "learn", "6");
   }
