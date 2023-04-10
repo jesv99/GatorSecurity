@@ -22,7 +22,7 @@ mongoose.connect(mongoUrl, {
 .catch(e=>console.log(e));
 
 server.post("/register", async(req, res)=>{
-    const {fname, lname, email, password, score} = req.body;
+    const {fname, lname, email, password, score, admin} = req.body;
 
     const encryptedPass = await bcrypt.hash(password, 10);
 
@@ -37,7 +37,8 @@ server.post("/register", async(req, res)=>{
             lname,
             email,
             password:encryptedPass,
-            score
+            score,
+            admin,
         });
         res.send({status:"ok"})
     } catch(error){

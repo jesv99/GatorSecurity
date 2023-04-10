@@ -10,14 +10,28 @@ export default class SignUp extends Component {
       fname:"",
       lname:"",
       email:"",
-      password:""
+      password:"",
+      admin:false,
+      code: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleSubmit(e){
     e.preventDefault();
-    const{fname, lname, email, password} = this.state;
-    console.log(fname, lname, email, password);
+    const{fname, lname, email, password, admin,code} = this.state;
+    console.log(fname, lname, email, password, admin);
+
+    if (code === "123") {
+      this.setState({ admin: true});
+    }
+    else if(code === ""){
+      this.setState({ admin: false});
+    } else {
+      alert("The administrator code that was given is incorrect. Please try again or leave blank.");
+      return;
+    }
+
     fetch("http://localhost:5000/register", {
       method: "POST",
       crossDomain:true,
@@ -30,7 +44,8 @@ export default class SignUp extends Component {
         fname,
         lname,
         email,
-        password
+        password,
+        admin,
       }),
     }).then((res)=>res.json())
     .then((data)=>{
@@ -41,6 +56,8 @@ export default class SignUp extends Component {
       }
     })
   }
+
+
   render() {
     return (
       <div>
@@ -82,6 +99,16 @@ export default class SignUp extends Component {
               className="form-control"
               placeholder="Enter password..."
               onChange={e=>this.setState({password:e.target.value})}
+            />
+          </div>
+
+          <div className="mb-3">
+          <label>Administrator Code</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter administrator code..."
+            onChange={e=>this.setState({code:e.target.value})}
             />
           </div>
 
