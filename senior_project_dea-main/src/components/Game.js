@@ -26,14 +26,6 @@ function updateScore(token_, section_, index_) {
 }
 
 function submit() {
-    //var gamepage = document.getElementById("gamepagediv");
-    /*
-    console.log(gamepage);
-    var display = document.createElement("p")
-    display.textContent = display.textContent = document.getElementById("search").value;
-    gamepage.appendChild(display);
-    */
-
     if (document.getElementById("search").value === "<script>alert('Attack Successful')</script>") {
         alert("Attack successful!");
         updateScore(window.localStorage.getItem("token"), "game", "0");
@@ -41,8 +33,7 @@ function submit() {
     else {
         alert("Incorrect. Try again!");
     }
-
-    return;
+ 
 }
 
 function submit2() {
@@ -57,7 +48,7 @@ function submit2() {
         let table = document.createElement("TABLE");
 
         for (let i = 0; i < usernamesArr.length; i++) {
-            var row = table.insertRow(i);
+            let row = table.insertRow(i);
             row.style.border = "1px solid black";
             row.insertCell(0).innerHTML = usernamesArr[i];
         }
@@ -74,12 +65,10 @@ function submit2() {
     else {
         alert("Incorrect. Try again!");
     }
-
-    return;
 }
 
 function submit3() {
-    var gamepage = document.getElementById("search-container-3");
+    let gamepage = document.getElementById("search-container-3");
     console.log(gamepage);
 
     if (document.getElementById("email").value === "administrator'--") {
@@ -89,11 +78,10 @@ function submit3() {
     else {
         alert("Incorrect. Try again!");
     }
-    return;
 }
 
 function submit4() {
-    var gamepage = document.getElementById("search-container-4");
+    let gamepage = document.getElementById("search-container-4");
     console.log(gamepage);
 
     if (document.getElementById("search-4").value === "http://www.testwebsite.com/accdashboard.html#context=&ltscript&gtSomeFunction(somevariable)&lt/script&gt") {
@@ -103,11 +91,10 @@ function submit4() {
     else {
         alert("Incorrect. Try again!");
     }
-    return;
 }
 
 function submit5() {
-    var gamepage = document.getElementById("search-container-5");
+    let gamepage = document.getElementById("search-container-5");
     console.log(gamepage);
 
     if (document.getElementById("key").value === "UFCSGatorsCybersecurity") {
@@ -117,11 +104,10 @@ function submit5() {
     else {
         alert("Incorrect. Try again!");
     }
-    return;
 }
 
 function submit6() {
-    var gamepage = document.getElementById("search-container-6");
+    let gamepage = document.getElementById("search-container-6");
     console.log(gamepage);
 
     if (document.getElementById("true/false").value === "true") {
@@ -134,7 +120,6 @@ function submit6() {
     else {
         alert("Incorrect input, please type \"true\" or \"false\". Try again!");
     }
-    return;
 }
 
 const box = {
