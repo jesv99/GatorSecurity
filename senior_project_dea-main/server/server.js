@@ -30,7 +30,7 @@ server.post("/register", async (req, res) => {
     const encryptedPass = await bcrypt.hash(password, 10);
   
     try {
-      const existingUser = await User.findOne({ email:{ $eq: email } });
+      const existingUser = await User.findById({ email});
   
       if (existingUser) {
         return res.send({ error: "The email used already exists" });
