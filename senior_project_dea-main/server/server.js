@@ -4,8 +4,11 @@ const bcrypt = require("bcryptjs")
 const dotenv = require("dotenv")
 dotenv.config()
 
-const server = express()
 const cors=require("cors")
+let helmet = require("helmet");
+let server = express()
+
+server.use(helmet.hidePoweredBy());
 server.use(cors());
 server.use(express.json())
 require("./userSchema")

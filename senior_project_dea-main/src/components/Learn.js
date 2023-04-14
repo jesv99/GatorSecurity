@@ -12,7 +12,6 @@ function updateScore(token_, section_, index_) {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
       token: token_,
