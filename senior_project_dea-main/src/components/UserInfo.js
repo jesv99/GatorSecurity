@@ -15,7 +15,6 @@ export default class UserInfo extends Component{
         headers:{
             "Content-Type":"application/json",
             Accept:"application/json",
-            "Access-Control-Allow-Origin":"*",
         },
         body:JSON.stringify({
             token:window.localStorage.getItem("token"),

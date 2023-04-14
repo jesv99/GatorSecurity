@@ -12,7 +12,6 @@ function updateScore(token_, section_, index_) {
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
             token: token_,
@@ -84,7 +83,7 @@ function submit4() {
     let gamepage = document.getElementById("search-container-4");
     console.log(gamepage);
 
-    if (document.getElementById("search-4").value === "http://www.testwebsite.com/accdashboard.html#context=&ltscript&gtSomeFunction(somevariable)&lt/script&gt") {
+    if (document.getElementById("search-4").value === "https://www.testwebsite.com/accdashboard.html#context=&ltscript&gtSomeFunction(somevariable)&lt/script&gt") {
         alert("Great job! You successfully sanitized the URL.");
         updateScore(window.localStorage.getItem("token"), "game", "3");
     }
@@ -229,7 +228,7 @@ function GamePage() {
                             </Tab.Pane>
                             <Tab.Pane eventKey="fourth">
                                 <p>This question is about input sanitization to prevent things such as Cross-Site Scrypting attacks. Imagine an attacker types in a URL that has some
-                                    script to run some malicious function into a browser (Ex: http://www.testwebsite.com/accdashboard.html#context=&lt;script&gt;SomeFunction(somevariable)&lt;/script&gt;).
+                                    script to run some malicious function into a browser (Ex: https://www.testwebsite.com/accdashboard.html#context=&lt;script&gt;SomeFunction(somevariable)&lt;/script&gt;).
                                     A secure browser with input sanitation would change a malicious input by replacing, removing, or escaping characters. Manipulate this input just as a secure
                                     browser would so that the script is not run as code, but interpreted as data and type your answer into the input field.
                                 </p>
@@ -254,7 +253,7 @@ function GamePage() {
                                     True or False: The following email is an example of phishing.
                                 </p>
 
-                                <a href="http://efax.hosting.com.mailru382.co/efaxdelivery/2017Dk4h325RE3" > <img className='eFax-image' src={eFax} alt="phishing" /></a>
+                                <a href="https://efax.hosting.com.mailru382.co/efaxdelivery/2017Dk4h325RE3" > <img className='eFax-image' src={eFax} alt="phishing" /></a>
                                 <div className="search-container-6">
                                     <input type="text" placeholder="true/false" id="true/false"></input>
                                     <button className="button" onClick={submit6}>Submit</button>
