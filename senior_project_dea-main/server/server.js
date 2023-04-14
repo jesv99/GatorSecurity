@@ -5,11 +5,24 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const cors=require("cors")
-let helmet = require("helmet");
+const helmet = require("helmet");
 let server = express()
 
 server.use(helmet.hidePoweredBy());
-server.use(cors());
+
+
+const allowedOrigins = ["http://localhost:3000"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+server.use(cors(corsOptions));
 server.use(express.json())
 require("./userSchema")
 const jwtObj = require("jsonwebtoken");
@@ -30,7 +43,7 @@ server.post("/register", async (req, res) => {
     const encryptedPass = await bcrypt.hash(password, 10);
   
     try {
-      const existingUser = await User.findById({ email});
+      const existingUser = await User.findOne({ email});
   
       if (existingUser) {
         return res.send({ error: "The email used already exists" });
@@ -58,7 +71,7 @@ server.post("/register", async (req, res) => {
     const { email, password } = req.body;
   
     try {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email});
   
       if (!user) {
         return res.json({ error: "User not found. That email does not exist " });
