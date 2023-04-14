@@ -24,30 +24,34 @@ mongoose.connect(mongoUrl, {
 })
 .catch(e=>console.log(e));
 
-server.post("/register", async(req, res)=>{
-    const {fname, lname, email, password, score, admin} = req.body;
-
+server.post("/register", async (req, res) => {
+    const { fname, lname, email, password, score, admin } = req.body;
+  
     const encryptedPass = await bcrypt.hash(password, 10);
-
-    try{
-        const existingUser = await User.findOne({email});
-
-        if(existingUser){
-            return res.send({error: "The email used already exists"})
-        }
-        await User.create({
-            fname,
-            lname,
-            email,
-            password:encryptedPass,
-            score,
-            admin,
-        });
-        res.send({status:"ok"})
-    } catch(error){
-        res.send({status: "error"});
+  
+    try {
+      const existingUser = await User.findOne({ email });
+  
+      if (existingUser) {
+        return res.send({ error: "The email used already exists" });
+      }
+  
+      const newUser = new User({
+        fname,
+        lname,
+        email,
+        password: encryptedPass,
+        score,
+        admin,
+      });
+  
+      await newUser.save();
+  
+      res.send({ status: "ok" });
+    } catch (error) {
+      res.send({ status: "error" });
     }
-});
+  });
 
 
 server.post("/login", async(req,res)=> {
