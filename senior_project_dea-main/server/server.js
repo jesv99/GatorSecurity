@@ -30,7 +30,7 @@ server.post("/register", async (req, res) => {
     const encryptedPass = await bcrypt.hash(password, 10);
   
     try {
-      const existingUser = await User.findOne({ email });
+      const existingUser = await User.findOne({ email:{ $eq: email } });
   
       if (existingUser) {
         return res.send({ error: "The email used already exists" });
@@ -54,27 +54,29 @@ server.post("/register", async (req, res) => {
   });
 
 
-server.post("/login", async(req,res)=> {
-    const {email, password} = req.body;
-
-    const user=await User.findOne({email});
-
-    if(!user){
-        return res.json({error: "User not found. That email does not exist "});
+  server.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      const user = await User.findOne({ email });
+  
+      if (!user) {
+        return res.json({ error: "User not found. That email does not exist " });
+      }
+  
+      const passwordMatches = await bcrypt.compare(password, user.password);
+  
+      if (!passwordMatches) {
+        return res.json({ status: "error", error: "Invalid password" });
+      }
+  
+      const tempToken = jwtObj.sign({ email: user.email }, Jwt_secret_Obj);
+  
+      return res.json({ status: "ok", data: tempToken });
+    } catch (error) {
+      return res.json({ status: "error", error: error.message });
     }
-
-    if(await bcrypt.compare(password, user.password)){
-        const tempToken = jwtObj.sign({email:user.email}, Jwt_secret_Obj);
-
-        if(res.status(201)){
-            return res.json({status:"ok", data: tempToken});
-        }else{
-            return res.json({error:"error"});
-        }
-    }
-    res.json({status:"error", error:"Invalid password"})
-    
-})
+  });
 
 
 server.post("/userInfo", async(req,res)=>{
